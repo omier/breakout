@@ -11,6 +11,7 @@ import (
 // Game implements ebiten.Game interface.
 type Game struct {
 	Paddle *objects.Paddle
+	Ball   *objects.Ball
 }
 
 // Update proceeds the game state.
@@ -30,6 +31,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	// Write your game's rendering.
 	screen.Fill(color.Black)
 	screen.DrawImage(g.Paddle.Image, g.Paddle.Options)
+	screen.DrawImage(g.Ball.Image, g.Ball.Options)
 }
 
 // Layout takes the outside size (e.g., the window size) and returns the (logical) screen size.
@@ -45,6 +47,7 @@ func main() {
 
 	game := &Game{
 		Paddle: objects.NewPaddle(),
+		Ball:   objects.NewBall(),
 	}
 
 	// Call ebiten.RunGame to start your game loop.
